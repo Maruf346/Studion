@@ -193,9 +193,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SILENCED_SYSTEM_CHECKS = ['ckeditor.W001']
 JAZZMIN_SETTINGS = {
-    "site_title": "Ecom-Starter-Kit Admin",
-    "site_header": "Ecom-Starter-Kit Admin",
-    "site_brand": "Ecom-Starter-Kit",
+    "site_title": "Studion Admin",
+    "site_header": "Studion Admin",
+    "site_brand": "Studion",
     "login_logo": "images/logo.png",
     "welcome_sign": "Welcome to Admin Panel",
     "show_ui_builder": True,
