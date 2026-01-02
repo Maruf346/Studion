@@ -5,7 +5,6 @@ from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser # 
 from django.contrib.auth import authenticate, get_user_model
 from rest_framework_simplejwt.tokens import RefreshToken # type: ignore
 from .serializers import *
-from drf_yasg.utils import swagger_auto_schema # type: ignore
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser # type: ignore
 from rest_framework.decorators import api_view, permission_classes # type: ignore
 from django.core.mail import send_mail
@@ -16,7 +15,12 @@ from .models import PasswordResetRequest
 # Extra imports for Google Auth
 from google.oauth2 import id_token # type: ignore
 from google.auth.transport import requests # type: ignore
-
+# Extra imports for OpenAPI
+from drf_spectacular.utils import ( # type: ignore
+    extend_schema,
+    extend_schema_view,
+)
+from drf_spectacular.utils import OpenApiResponse # type: ignore
 
 User = get_user_model()
 
@@ -66,8 +70,8 @@ class UserViewSet(viewsets.ModelViewSet):
             status=status.HTTP_201_CREATED,
         )
 
-    @swagger_auto_schema(
-        request_body=UserLoginSerializer,       
+    @extend_schema(
+        request=UserLoginSerializer,
         responses={200: "Successful login", 401: "Invalid credentials"},
     )
     @action(detail=False, methods=["post"], permission_classes=[AllowAny])
@@ -109,17 +113,13 @@ class UserViewSet(viewsets.ModelViewSet):
         serializer = UserProfileSerializer(request.user)
         return Response(serializer.data)
 
-    @swagger_auto_schema(
-        method="put",
-        request_body=UserProfileSerializer,
+    @extend_schema(
+        request=UserProfileSerializer,
         responses={200: UserProfileSerializer},
-        consumes=["multipart/form-data"]
     )
-    @swagger_auto_schema(
-        method="patch",
-        request_body=UserProfileSerializer,
+    @extend_schema(
+        request=UserProfileSerializer,
         responses={200: UserProfileSerializer},
-        consumes=["multipart/form-data"]
     )
     @action(detail=False, methods=["put", "patch"], permission_classes=[IsAuthenticated])
     def update_profile(self, request):
@@ -181,27 +181,27 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 """
-    @swagger_auto_schema(auto_schema=None)
+    @extend_schema(auto_schema=None)
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
 
-    @swagger_auto_schema(auto_schema=None)
+    @extend_schema(auto_schema=None)
     def retrieve(self, request, *args, **kwargs):
         return super().retrieve(request, *args, **kwargs)
 
-    @swagger_auto_schema(auto_schema=None)
+    @extend_schema(auto_schema=None)
     def destroy(self, request, *args, **kwargs):
         return super().destroy(request, *args, **kwargs)
     
-    @swagger_auto_schema(auto_schema=None)
+    @extend_schema(auto_schema=None)
     def create(self, request, *args, **kwargs):
         return super().create(request, *args, **kwargs)
     
-    @swagger_auto_schema(auto_schema=None)
+    @extend_schema(auto_schema=None)
     def update(self, request, *args, **kwargs):
         return super().update(request, *args, **kwargs)
     
-    @swagger_auto_schema(auto_schema=None)
+    @extend_schema(auto_schema=None)
     def partial_update(self, request, *args, **kwargs):
         return super().partial_update(request, *args, **kwargs)
 """
