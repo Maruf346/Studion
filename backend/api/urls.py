@@ -4,23 +4,36 @@ from drf_spectacular.views import ( # type: ignore
     SpectacularAPIView,
     SpectacularSwaggerView,
 )
+from content.views import *
 
 router = DefaultRouter()
 
-"""API URL Configuration
-schema_view = get_schema_view(
-    openapi.Info(
-        title="Papyrus API",
-        default_version='v1',
-        description="API documentation for Papyrus",
-         terms_of_service="https://www.google.com/policies/terms/",
-      contact=openapi.Contact(email="maruf.bshs@gmail.com"),
-      license=openapi.License(name="BSD License"),
-    ),
-    public=True,
-    permission_classes=(permissions.AllowAny,),
-)
-"""
+
+# Content Section
+router.register(r'company-info', CompanyInfoViewSet)
+router.register(r'nav-menu', NavMenuViewSet)
+router.register(r'hero-motto', HeroMottoViewSet)
+router.register(r'hero-slider', HeroSliderViewSet)
+router.register(r'offer-banner', OfferBannerViewSet)
+router.register(r'customer-review', CustomerReviewViewSet)
+router.register(r'contact-us', ContactUsViewSet)
+router.register(r'suggestion-message', SuggestionMessageViewSet)
+router.register(r'dynamic-scripts', DynamicScriptsViewSet)
+    # newly added routers
+router.register(r'photo-gallery', PhotoGalleryViewSet)
+router.register(r'policy/refund', RefundPolicyViewSet)
+router.register(r'policy/shipping', ShippingPolicyViewSet)
+router.register(r'policy/privacy', PrivacyPolicyViewSet)
+router.register(r'shop-location', ShopLocationViewSet)
+router.register(r'additional-info', AdditionalInfoViewSet)
+router.register(r'terms-and-conditions', TermsAndConditionsViewSet)
+router.register(r'partial-payment-description', PartialPaymentDescriptionViewSet)
+router.register(r'faq', FAQViewSet)
+router.register(r'announcement', AnnouncementViewSet)
+router.register(r'pop-up-banner', PopUpBannerViewSet)
+
+
+
 urlpatterns = [
     path('', include(router.urls)),   
     path("configs/", include("configs.urls")), 
