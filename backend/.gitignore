@@ -1,0 +1,18 @@
+staticfiles/
+/staticfiles/
+/static/staticfiles/
+
+# Virtual environment
+myenv/
+venv/
+env/
+
+# Django stuff
+*.log
+*.pot
+*.pyc
+
+# Python
+*.pyc
+__pycache__/
+*.pyo
