@@ -68,7 +68,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# CORS Configuration
 CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+
 
 # REST Framework Configuration
 REST_FRAMEWORK = {
@@ -90,6 +93,7 @@ REST_FRAMEWORK = {
         "rest_framework.parsers.FormParser",
         "rest_framework.parsers.MultiPartParser",
     ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 
@@ -100,6 +104,17 @@ SIMPLE_JWT = {
     "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": True,
     "AUTH_HEADER_TYPES": ("Bearer",),
+}
+
+# Spectacular Settings
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Studion API',
+    'DESCRIPTION': 'API documentation for Studion',
+    'VERSION': 'v1',
+    'TERMS_OF_SERVICE': 'https://www.google.com/policies/terms/',
+    'CONTACT': {'email': 'maruf.bshs@gmail.com'},
+    'LICENSE': {'name': 'BSD License'},
+    'SERVE_INCLUDE_SCHEMA': True,  # optional: hides raw schema in UI
 }
 
 # AUTH_USER_MODEL = "user.User"

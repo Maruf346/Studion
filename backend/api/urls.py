@@ -22,7 +22,7 @@ schema_view = get_schema_view(
 )
 """
 urlpatterns = [
-    # path('', include(router.urls)),   
+    path('', include(router.urls)),   
     path("configs/", include("configs.urls")), 
     
     # Swagger UI
