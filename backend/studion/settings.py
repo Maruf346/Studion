@@ -115,6 +115,7 @@ SPECTACULAR_SETTINGS = {
     'CONTACT': {'email': 'maruf.bshs@gmail.com'},
     'LICENSE': {'name': 'BSD License'},
     'SERVE_INCLUDE_SCHEMA': True,  # optional: hides raw schema in UI
+    "SCHEMA_PATH_PREFIX": "/api",  # optional: to STOP grouping by URL
 }
 
 AUTH_USER_MODEL = "user.User"
