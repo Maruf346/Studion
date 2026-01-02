@@ -1,13 +1,13 @@
-from rest_framework import viewsets, status
-from rest_framework.decorators import action
-from rest_framework.response import Response
-from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
+from rest_framework import viewsets, status # type: ignore
+from rest_framework.decorators import action # type: ignore
+from rest_framework.response import Response # type: ignore
+from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser # type: ignore
 from django.contrib.auth import authenticate, get_user_model
 from rest_framework_simplejwt.tokens import RefreshToken # type: ignore
 from .serializers import *
 from drf_yasg.utils import swagger_auto_schema # type: ignore
-from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework.parsers import MultiPartParser, FormParser, JSONParser # type: ignore
+from rest_framework.decorators import api_view, permission_classes # type: ignore
 from django.core.mail import send_mail
 from django.utils import timezone
 from configs.models import EmailConfig

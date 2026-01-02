@@ -117,7 +117,7 @@ SPECTACULAR_SETTINGS = {
     'SERVE_INCLUDE_SCHEMA': True,  # optional: hides raw schema in UI
 }
 
-# AUTH_USER_MODEL = "user.User"
+AUTH_USER_MODEL = "user.User"
 
 ROOT_URLCONF = 'studion.urls'
 
