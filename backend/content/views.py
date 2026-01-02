@@ -1,8 +1,8 @@
-from rest_framework import viewsets
+from rest_framework import viewsets # type: ignore
 from .models import *
 from .serializers import *
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
-from user.permissions import IsAdminOrReadOnly
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny # type: ignore
+from user.permissions import IsAdminOrReadOnly # type: ignore
 
 class CompanyInfoViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAdminOrReadOnly]
