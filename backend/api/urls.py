@@ -6,6 +6,7 @@ from drf_spectacular.views import ( # type: ignore
 )
 from content.views import *
 from service.views import *
+from sitesettings.views import *
 
 router = DefaultRouter()
 
@@ -36,6 +37,10 @@ router.register(r'pop-up-banner', PopUpBannerViewSet)
 # Service URLs
 router.register(r"service-categories", ServiceCategoryViewSet, basename="service-categories")
 router.register(r"services", ServiceViewSet, basename="services")
+
+# Site Settings Section
+router.register(r'footer', FooterViewSet, basename='footer')
+router.register(r'support', SupportViewSet, basename='support')
 
 
 urlpatterns = [
