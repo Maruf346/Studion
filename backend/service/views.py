@@ -1,4 +1,4 @@
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.viewsets import ModelViewSet # type: ignore
 from .models import ServiceCategory, Service
 from .serializers import *
 from user.permissions import IsAdminOrReadOnly
