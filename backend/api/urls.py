@@ -5,6 +5,7 @@ from drf_spectacular.views import ( # type: ignore
     SpectacularSwaggerView,
 )
 from content.views import *
+from service.views import *
 
 router = DefaultRouter()
 
@@ -32,6 +33,9 @@ router.register(r'faq', FAQViewSet)
 router.register(r'announcement', AnnouncementViewSet)
 router.register(r'pop-up-banner', PopUpBannerViewSet)
 
+# Service URLs
+router.register(r"service-categories", ServiceCategoryViewSet, basename="service-categories")
+router.register(r"services", ServiceViewSet, basename="services")
 
 
 urlpatterns = [
